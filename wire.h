@@ -9,9 +9,9 @@
  * 
  * Created: Wed Aug  8 23:49:50 2018 (-0500)
  * Version: 
- * Last-Updated: Sat Aug 11 17:49:59 2018 (-0500)
+ * Last-Updated: Sun Aug 12 14:06:01 2018 (-0500)
  *           By: yulu
- *     Update #: 81
+ *     Update #: 86
  * 
  */
 
@@ -39,8 +39,8 @@ public:
   
   Wire(const listVect &, double,  double);
   
-  IdL_R elementIdLR(void);
-  listVect pathDiscretize(void);
+  IdL_R elementIdLR (void) const;
+  listVect pathDiscretize(void) const;
   void pathExtend(const listVect &extPath);
   void pathExtend(const std::vector<double> &extPath);
   void pathTranslate(const std::vector<double> &xyz);

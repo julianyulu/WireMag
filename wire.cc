@@ -9,9 +9,9 @@
 // 
 // Created: Sun Jul 22 13:12:30 2018 (-0500)
 // Version: 
-// Last-Updated: Sat Aug 11 17:49:12 2018 (-0500)
+// Last-Updated: Sun Aug 12 14:28:22 2018 (-0500)
 //           By: yulu
-//     Update #: 587
+//     Update #: 592
 // 
 
 #include <iostream>
@@ -32,7 +32,7 @@ Wire :: Wire(const listVect &path_value = default_path,  double unit_length_valu
   unit_length = unit_length_value;
 }
 
-listVect Wire :: pathDiscretize(void){
+listVect Wire :: pathDiscretize(void) const{
   listVect  dpath = path;
   std::vector<double> elemVector;
   std::vector<double> insertVector;
@@ -47,9 +47,6 @@ listVect Wire :: pathDiscretize(void){
   elemVector.resize(dpath.front().size());
   insertVector.resize(dpath.front().size());
 
-
-
-  
   while(iterElemEnd != dpath.end()) {
     
     // original element list and norm lengh 
@@ -76,7 +73,7 @@ listVect Wire :: pathDiscretize(void){
          
 
 
-IdL_R Wire :: elementIdLR(void){
+IdL_R Wire :: elementIdLR(void) const{
   listVect dpath = pathDiscretize();
   static IdL_R elemIdLR;
   if(dpath.size() < 2){
