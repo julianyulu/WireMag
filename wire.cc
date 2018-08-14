@@ -9,9 +9,9 @@
 // 
 // Created: Sun Jul 22 13:12:30 2018 (-0500)
 // Version: 
-// Last-Updated: Sun Aug 12 14:28:22 2018 (-0500)
+// Last-Updated: Mon Aug 13 22:49:41 2018 (-0500)
 //           By: yulu
-//     Update #: 592
+//     Update #: 595
 // 
 
 #include <iostream>
@@ -23,20 +23,20 @@
 #include "vectorAddOns.h"
 
 
-const listVect default_path = {{0.618, 0.618, 0.618}};
+const vectorList default_path = {{0.618, 0.618, 0.618}};
 
 
-Wire :: Wire(const listVect &path_value = default_path,  double unit_length_value = 0.1, double current_value = 1.0){
+Wire :: Wire(const vectorList &path_value = default_path,  double unit_length_value = 0.1, double current_value = 1.0){
   current = current_value;
   path = path_value;
   unit_length = unit_length_value;
 }
 
-listVect Wire :: pathDiscretize(void) const{
-  listVect  dpath = path;
+vectorList Wire :: pathDiscretize(void) const{
+  vectorList  dpath = path;
   std::vector<double> elemVector;
   std::vector<double> insertVector;
-  listVect::iterator iterElemEnd;
+  vectorList::iterator iterElemEnd;
   double elemNorm;
   double npts;
 
@@ -74,12 +74,12 @@ listVect Wire :: pathDiscretize(void) const{
 
 
 IdL_R Wire :: elementIdLR(void) const{
-  listVect dpath = pathDiscretize();
+  vectorList dpath = pathDiscretize();
   static IdL_R elemIdLR;
   if(dpath.size() < 2){
     std::cerr << "There must be at least two point in the discretized path !" << std::endl;
   } else{
-    for (listVect::iterator iter = dpath.begin(); iter != std::prev(dpath.end()); iter ++){
+    for (vectorList::iterator iter = dpath.begin(); iter != std::prev(dpath.end()); iter ++){
       elemIdLR.IdL.push_back((*std::next(iter) - *iter) * current);
       elemIdLR.R.push_back((*std::next(iter) + *iter) * 0.5);
     }
@@ -89,8 +89,8 @@ IdL_R Wire :: elementIdLR(void) const{
 }
 
   
-void Wire :: pathExtend(const listVect &extPath){
-  listVect tempExtPath = extPath;
+void Wire :: pathExtend(const vectorList &extPath){
+  vectorList tempExtPath = extPath;
   if(path == default_path){
     path = tempExtPath;
   }else if(tempExtPath.front() == path.back()){
@@ -103,7 +103,7 @@ void Wire :: pathExtend(const listVect &extPath){
 
 void Wire :: pathExtend(const std::vector<double> &extPath){
   if(path == default_path){
-    path = listVect {extPath};
+    path = vectorList {extPath};
   }else if(path.back() != extPath){
     path.push_back(extPath);
   }
@@ -146,16 +146,16 @@ void Wire :: pathRotate(const std::vector<double> &axis, double deg = 0){
 }
 
 
-listVect linearPath(const std::vector<double> &pt1 = {0, 0, 0},
+vectorList linearPath(const std::vector<double> &pt1 = {0, 0, 0},
 		    const std::vector<double> &pt2 = {0, 0, 1}){
-  return (listVect {pt1, pt2});
+  return (vectorList {pt1, pt2});
 }
 
 
-listVect rectangularPath(double dx = 0.4, double dy = 0.8){
+vectorList rectangularPath(double dx = 0.4, double dy = 0.8){
   double dx2 = dx / 2;
   double dy2 = dy / 2;
-  listVect rectPath = {{-dx2, dy2, 0},
+  vectorList rectPath = {{-dx2, dy2, 0},
 		       {dx2, dy2, 0},
 		       {dx2, -dy2, 0},
 		       {-dx2, -dy2, 0},
@@ -164,8 +164,8 @@ listVect rectangularPath(double dx = 0.4, double dy = 0.8){
 }
 		      
   
-listVect ellipticalPath(double rx = 1, double ry = 0.5, int pts = 50){
-  listVect elliPath;
+vectorList ellipticalPath(double rx = 1, double ry = 0.5, int pts = 50){
+  vectorList elliPath;
   double pi = 3.1415826;
   for(int p = 0; p <= pts; p++){
     double radians = p * 2 * pi / pts;
@@ -177,16 +177,16 @@ listVect ellipticalPath(double rx = 1, double ry = 0.5, int pts = 50){
 }
 
 
-listVect circularPath(double radius = 0.5, int pts = 50){
+vectorList circularPath(double radius = 0.5, int pts = 50){
   return ellipticalPath(radius, radius, pts);
 }
 
 
-listVect ellipticalSolenoidPath(double rx = 0.5, double ry = 0.2,
+vectorList ellipticalSolenoidPath(double rx = 0.5, double ry = 0.2,
 				double pitch = 0.01, int layers = 1,
 				int turns_per_layer = 10, int points_per_turn = 40){
   double const PI = 3.1415926;
-  listVect esPath;
+  vectorList esPath;
   double radians = 0;  
   int totPts = layers * turns_per_layer * points_per_turn;
   
@@ -205,7 +205,7 @@ listVect ellipticalSolenoidPath(double rx = 0.5, double ry = 0.2,
   return esPath;
 }
 
-listVect solenoidPath(double radius = 0.5, double pitch = 0.01,
+vectorList solenoidPath(double radius = 0.5, double pitch = 0.01,
 		      int layers = 1, int turns_per_layer = 10,
 		      int points_per_turn = 40){
   return ellipticalSolenoidPath(radius, radius, pitch, layers, turns_per_layer, points_per_turn);

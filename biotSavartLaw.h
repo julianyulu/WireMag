@@ -9,9 +9,9 @@
  * 
  * Created: Sat Aug 11 21:16:38 2018 (-0500)
  * Version: 
- * Last-Updated: Sun Aug 12 14:08:58 2018 (-0500)
+ * Last-Updated: Mon Aug 13 22:46:53 2018 (-0500)
  *           By: yulu
- *     Update #: 42
+ *     Update #: 43
  * 
  */
 
@@ -31,12 +31,12 @@ class BiotSavartLaw{
 
   void addWires(const Wire* wireObj);
   void clear(void);
-  listVect* calculateBField(const listVect &points) const;
+  vectorList* calculateBField(const vectorList &points) const;
 private:
   std::vector<double> crossProduct(const std::vector<double> &x, const std::vector<double> &y) const;
   
-  std::vector<double> singlePointBField(const std::vector<double> &r, const listVect &IdL,
-  					const listVect &R) const;
+  std::vector<double> singlePointBField(const std::vector<double> &r, const vectorList &IdL,
+  					const vectorList &R) const;
 
   
 };
