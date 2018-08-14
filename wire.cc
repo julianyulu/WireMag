@@ -9,16 +9,13 @@
 // 
 // Created: Sun Jul 22 13:12:30 2018 (-0500)
 // Version: 
-// Last-Updated: Mon Aug 13 22:49:41 2018 (-0500)
+// Last-Updated: Tue Aug 14 10:43:15 2018 (-0500)
 //           By: yulu
-//     Update #: 595
+//     Update #: 604
 // 
 
-#include <iostream>
 #include <algorithm>
 #include <cmath>
-#include <list>
-#include <vector>
 #include "wire.h"
 #include "vectorAddOns.h"
 
@@ -146,13 +143,14 @@ void Wire :: pathRotate(const std::vector<double> &axis, double deg = 0){
 }
 
 
-vectorList linearPath(const std::vector<double> &pt1 = {0, 0, 0},
+vectorList Wire :: linearPath(const std::vector<double> &pt1 = {0, 0, 0},
 		    const std::vector<double> &pt2 = {0, 0, 1}){
   return (vectorList {pt1, pt2});
 }
 
 
-vectorList rectangularPath(double dx = 0.4, double dy = 0.8){
+
+vectorList Wire :: rectangularPath(double dx, double dy){
   double dx2 = dx / 2;
   double dy2 = dy / 2;
   vectorList rectPath = {{-dx2, dy2, 0},
@@ -164,7 +162,7 @@ vectorList rectangularPath(double dx = 0.4, double dy = 0.8){
 }
 		      
   
-vectorList ellipticalPath(double rx = 1, double ry = 0.5, int pts = 50){
+vectorList Wire :: ellipticalPath(double rx = 1, double ry = 0.5, int pts = 50){
   vectorList elliPath;
   double pi = 3.1415826;
   for(int p = 0; p <= pts; p++){
@@ -177,19 +175,18 @@ vectorList ellipticalPath(double rx = 1, double ry = 0.5, int pts = 50){
 }
 
 
-vectorList circularPath(double radius = 0.5, int pts = 50){
+vectorList Wire ::circularPath(double radius = 0.5, int pts = 50){
   return ellipticalPath(radius, radius, pts);
 }
 
 
-vectorList ellipticalSolenoidPath(double rx = 0.5, double ry = 0.2,
+vectorList Wire :: ellipticalSolenoidPath(double rx = 0.5, double ry = 0.2,
 				double pitch = 0.01, int layers = 1,
 				int turns_per_layer = 10, int points_per_turn = 40){
   double const PI = 3.1415926;
   vectorList esPath;
   double radians = 0;  
-  int totPts = layers * turns_per_layer * points_per_turn;
-  
+    
   for(int i = 0; i < layers; i++){
     rx = rx + i * pitch / 2;
     ry = ry + i * pitch / 2;
@@ -205,7 +202,7 @@ vectorList ellipticalSolenoidPath(double rx = 0.5, double ry = 0.2,
   return esPath;
 }
 
-vectorList solenoidPath(double radius = 0.5, double pitch = 0.01,
+vectorList Wire ::solenoidPath(double radius = 0.5, double pitch = 0.01,
 		      int layers = 1, int turns_per_layer = 10,
 		      int points_per_turn = 40){
   return ellipticalSolenoidPath(radius, radius, pitch, layers, turns_per_layer, points_per_turn);

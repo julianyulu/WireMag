@@ -9,9 +9,9 @@
  * 
  * Created: Wed Aug  8 23:49:50 2018 (-0500)
  * Version: 
- * Last-Updated: Tue Aug 14 00:18:40 2018 (-0500)
+ * Last-Updated: Tue Aug 14 10:43:27 2018 (-0500)
  *           By: yulu
- *     Update #: 88
+ *     Update #: 95
  * 
  */
 
@@ -36,7 +36,8 @@ public:
   double current;
   double unit_length;
   vectorList path;
-  
+
+  Wire(void){};
   Wire(const vectorList &, double,  double);
   
   IdL_R elementIdLR (void) const;
@@ -47,7 +48,7 @@ public:
   void pathTranslate(double x, double y, double z);
   void pathRotate(const std::vector<double> &axis, double deg);
 
-  vectorList LinearPath(const std::vector<double> &pt1, const std::vector<double> &pt2);
+  vectorList linearPath(const std::vector<double> &pt1, const std::vector<double> &pt2);
   vectorList rectangularPath(double dx, double dy);
   vectorList ellipticalPath(double rx, double ry, int pts);
   vectorList circularPath(double radius, int pts);
