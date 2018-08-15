@@ -9,9 +9,9 @@
 // 
 // Created: Wed Aug  8 22:29:28 2018 (-0500)
 // Version: 
-// Last-Updated: Sat Aug 11 16:01:24 2018 (-0500)
+// Last-Updated: Tue Aug 14 15:22:22 2018 (-0500)
 //           By: yulu
-//     Update #: 82
+//     Update #: 90
 // 
 
 #ifndef _vectorAddOns_h_
@@ -36,11 +36,15 @@ template <typename T>
 std::vector<T> operator +(const std::vector<T> &a, const std::vector<T> &b){
   std::vector<T> res(a.size());
   if(a.size() != b.size()){
+    //std::cout << "size a:" << a.size() << " size b: " << b.size() << std::endl;
+    //printVector(a);
     std::cerr << "Vector operation '+' cannot be used for two vectors with different size"
 	      << std::endl;
   }else{
     std::transform(a.begin(), a.end(), b.begin(), res.begin(), std::plus<T>());
   }
+  
+  //std::transform(a.begin(), a.end(), b.begin(), res.begin(), std::plus<T>());
   return res;
 }
 

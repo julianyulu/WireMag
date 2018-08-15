@@ -9,9 +9,9 @@
 // 
 // Created: Fri Aug 10 11:02:15 2018 (-0500)
 // Version: 
-// Last-Updated: Tue Aug 14 10:51:29 2018 (-0500)
+// Last-Updated: Tue Aug 14 15:41:25 2018 (-0500)
 //           By: yulu
-//     Update #: 96
+//     Update #: 114
 // 
 
 #include "main.h"
@@ -27,18 +27,31 @@ int main(){
   vectorList * grid;
   vectorList *B;
   //w.path = w.linearPath(start,  end);
-  w.path = w.rectangularPath(0.5, 1);
+  w.path = w.rectangularPath(0.5, 1.0);
   IdLR = w.elementIdLR();
-  grid = Grid().cuboidVolumn(0, 1, 0, 1, 0, 1, 0.1);
+  grid = Grid().cuboidVolumn(-1, 1, -1, 1, -1, 1, 0.2);
   BiotSavartLaw bls(&w);
   B =  bls.calculateBField(*grid);
  
+  std::cout << "path" << std::endl;
+  for(std::vector<double> x: w.path){
+    printVector(x);
+  }
+
   
+
+  
+
   std::cout << "B Field" << std::endl;
   for(std::vector<double> x: *B){
     printVector(x);
   }
-  /*
+  /*  
+  std::cout << "grid" << std::endl;
+  for(std::vector<double> x: *grid){
+    printVector(x);
+  }
+
   std::cout << "IdL: "<< std::endl;
   for(auto x: IdLR.IdL){
     printVector(x);
