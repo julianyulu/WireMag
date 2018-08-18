@@ -9,9 +9,9 @@
 // 
 // Created: Fri Aug 10 11:02:15 2018 (-0500)
 // Version: 
-// Last-Updated: Tue Aug 14 15:41:25 2018 (-0500)
+// Last-Updated: Wed Aug 15 01:20:44 2018 (-0500)
 //           By: yulu
-//     Update #: 114
+//     Update #: 115
 // 
 
 #include "main.h"
@@ -26,8 +26,8 @@ int main(){
   std::vector<double> end = {0, 0, 1};
   vectorList * grid;
   vectorList *B;
-  //w.path = w.linearPath(start,  end);
-  w.path = w.rectangularPath(0.5, 1.0);
+  w.path = w.linearPath(start,  end);
+  //w.path = w.rectangularPath(0.5, 1.0);
   IdLR = w.elementIdLR();
   grid = Grid().cuboidVolumn(-1, 1, -1, 1, -1, 1, 0.2);
   BiotSavartLaw bls(&w);
@@ -38,9 +38,6 @@ int main(){
     printVector(x);
   }
 
-  
-
-  
 
   std::cout << "B Field" << std::endl;
   for(std::vector<double> x: *B){
