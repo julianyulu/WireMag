@@ -9,13 +9,26 @@
 // 
 // Created: Thu Aug  9 00:07:39 2018 (-0500)
 // Version: 
-// Last-Updated: Sat Aug 11 16:03:28 2018 (-0500)
+// Last-Updated: Mon Aug 20 15:05:10 2018 (-0500)
 //           By: yulu
-//     Update #: 15
+//     Update #: 19
 // 
 
 #include "vectorAddOns.h"
 #include <cmath>
+
+
+
+std::ostream& writeVectorList(std::ostream& os, vectorList& v){
+  for(auto x:v){
+    for(auto y:x){
+      os << y << "\t";
+    }
+    os << std::endl;
+  }
+  return os;
+}
+
 
 // l2 normalization of vector
 // ------------------------------------------

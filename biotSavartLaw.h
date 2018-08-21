@@ -9,9 +9,9 @@
  * 
  * Created: Sat Aug 11 21:16:38 2018 (-0500)
  * Version: 
- * Last-Updated: Mon Aug 13 22:46:53 2018 (-0500)
+ * Last-Updated: Mon Aug 20 23:07:04 2018 (-0500)
  *           By: yulu
- *     Update #: 43
+ *     Update #: 85
  * 
  */
 
@@ -21,24 +21,37 @@
 #include<list>
 #include "vectorAddOns.h"
 #include "wire.h"
+#include "genGrid.h"
 
 class BiotSavartLaw{
  public:
   std::list<const Wire*> wires;
-
+  const Grid* mesh;
+  double current;
+  
   BiotSavartLaw(void);
-  BiotSavartLaw(const Wire* wireObj);
+  BiotSavartLaw(const Wire* ptrWireObj, const Grid* gridObj, double current_value);
 
+  
   void addWires(const Wire* wireObj);
-  void clear(void);
-  vectorList* calculateBField(const vectorList &points) const;
-private:
-  std::vector<double> crossProduct(const std::vector<double> &x, const std::vector<double> &y) const;
-  
-  std::vector<double> singlePointBField(const std::vector<double> &r, const vectorList &IdL,
-  					const vectorList &R) const;
+  void clearWires(void);
 
+  std::vector<double> singlePointBField(const std::vector<double> &r);
+  vectorList* meshGridBField(void);
   
+  
+  
+  
+private:
+  const vectorList* ptr_IdL;
+  const vectorList* ptr_R;
+  
+  const vectorList* IdL(void);
+  const vectorList* R(void);
+  std::vector<double> crossProduct(const std::vector<double> &x, const std::vector<double> &y);
+  
+  
+
 };
 
 

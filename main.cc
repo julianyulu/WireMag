@@ -1,63 +1,61 @@
-// main.cc --- 
+// test.cc --- 
 // 
-// Filename: main.cc
+// Filename: test.cc
 // Description: 
 // 
 // Author:    Yu Lu
 // Email:     yulu@utexas.edu
 // Github:    https://github.com/SuperYuLu 
 // 
-// Created: Fri Aug 10 11:02:15 2018 (-0500)
+// Created: Mon Aug 20 12:09:07 2018 (-0500)
 // Version: 
-// Last-Updated: Wed Aug 15 01:20:44 2018 (-0500)
+// Last-Updated: Mon Aug 20 23:21:35 2018 (-0500)
 //           By: yulu
-//     Update #: 115
+//     Update #: 173
 // 
 
 #include "main.h"
 
 int main(){
 
+  // Generate and save grid points 
+  Grid g;
+  g.grid = *g.rectanglePlane();
+
+  std::ofstream f1("grid.dat", std::ios::out);
+  if (f1.is_open()){
+    writeVectorList(f1, g.grid);
+    f1.close();
+  }
+  
+  
+  // Generate and save wire geometry
   Wire w;
-  IdL_R IdLR;
-  w.current = 100;
-  w.unit_length = 0.1;
-  std::vector<double> start = {0, 0, 0};
-  std::vector<double> end = {0, 0, 1};
-  vectorList * grid;
-  vectorList *B;
-  w.path = w.linearPath(start,  end);
-  //w.path = w.rectangularPath(0.5, 1.0);
-  IdLR = w.elementIdLR();
-  grid = Grid().cuboidVolumn(-1, 1, -1, 1, -1, 1, 0.2);
-  BiotSavartLaw bls(&w);
-  B =  bls.calculateBField(*grid);
- 
-  std::cout << "path" << std::endl;
-  for(std::vector<double> x: w.path){
-    printVector(x);
+  vectorList* B;
+  w.path = *w.solenoidPath();
+  w.unit_length = 0.05;
+  w.pathDiscretize();
+  
+  std::ofstream f2("wire_path.dat", std::ios::out);
+  if (f2.is_open()){
+    writeVectorList(f2, w.path);
+    f2.close();
+  }
+  
+
+  // Calculate under biotSavartLaw 
+  BiotSavartLaw bst;
+  bst.addWires(&w);
+  bst.mesh = &g;
+  bst.current = 500;
+
+  B = bst.meshGridBField();
+
+  std::ofstream f3("B_field.dat", std::ios::out);
+  if (f3.is_open()){
+    writeVectorList(f3, *B);
+    f3.close();
   }
 
-
-  std::cout << "B Field" << std::endl;
-  for(std::vector<double> x: *B){
-    printVector(x);
-  }
-  /*  
-  std::cout << "grid" << std::endl;
-  for(std::vector<double> x: *grid){
-    printVector(x);
-  }
-
-  std::cout << "IdL: "<< std::endl;
-  for(auto x: IdLR.IdL){
-    printVector(x);
-  }
-
-  std::cout << "R: "<< std::endl;
-  for(auto x: IdLR.R){
-    printVector(x);
-  }
-  */
   return 0;
 }

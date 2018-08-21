@@ -9,9 +9,9 @@
  * 
  * Created: Mon Aug 13 22:53:16 2018 (-0500)
  * Version: 
- * Last-Updated: Tue Aug 14 00:18:32 2018 (-0500)
+ * Last-Updated: Mon Aug 20 22:02:12 2018 (-0500)
  *           By: yulu
- *     Update #: 25
+ *     Update #: 59
  * 
  */
 
@@ -21,15 +21,52 @@
 #include <vector>
 #include <list>
 #include "vectorAddOns.h"
-
-typedef std::list< std::vector<double>> vectorList;
+#include <fstream>
+#include <string>
 
 class Grid{
 
- public:
-  vectorList* cuboidVolumn(double x1, double x2, double y1, double y2, double z1, double z2, double resolution);
-  std::list<double>* gen1DGrid(double begin, double end, double resolution);
-  vectorList* meshGrid(const std::list<double> *xCoords, const std::list<double> *yCoords, const std::list<double> *zCoords);
+public:
+  vectorList grid;
+
+  Grid(void);
+  //Grid(std::string kind = "cuboidVolumn");
+  
+  vectorList* singlePiont(double x = 0.0,
+			  double y = 0.0,
+			  double z = 0.0);
+
+  vectorList* line(double x1 = 0.0,
+		   double y1 = 0.0,
+		   double z1 = -1.0,
+		   double x2 = 0.0,
+		   double y2 = 0.0,
+		   double z2 = 1.0,
+		   double resolution = 0.1);
+
+  vectorList* rectanglePlane(double x1 = -1.0,
+			      double y1 = -1.0,
+			      double z1 = 0.0,
+			      double x2 = 1.0,
+			      double y2 = 1.0,
+			      double z2 = 0.0,
+			      double resolution = 0.1);
+  
+
+  vectorList* cuboidVolumn(double x1 = -1.0,
+			   double y1 = -1.0,
+			   double z1 = -1.0,
+			   double x2 = 1.0,
+			   double y2 = 1.0,
+			   double z2 = 1.0,
+			   double resolution = 0.1);
+
+  //vectorList* reduceDim(vectorList& input, int axis = 0, double value = 0);
+private:
+  std::vector<double> gen1DGrid(double begin, double end, double resolution);
+ 
+  vectorList* meshGrid(const std::vector<double> xCoords, const std::vector<double> yCoords, const std::vector<double> zCoords);
+  
   
 };
 

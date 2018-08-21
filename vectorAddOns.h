@@ -9,17 +9,24 @@
 // 
 // Created: Wed Aug  8 22:29:28 2018 (-0500)
 // Version: 
-// Last-Updated: Tue Aug 14 15:22:22 2018 (-0500)
+// Last-Updated: Mon Aug 20 15:04:25 2018 (-0500)
 //           By: yulu
-//     Update #: 90
+//     Update #: 98
 // 
 
 #ifndef _vectorAddOns_h_
 #define _vectorAddOns_h_
 
 #include<vector>
+#include<list>
 #include<algorithm>
 #include<iostream>
+
+
+typedef std::list< std::vector <double>> vectorList;
+
+std::ostream& writeVectorList(std::ostream& os, vectorList& v);
+  
 
 // Auxxillary funcitions
 template <typename T>

@@ -7,24 +7,19 @@
  * Email:     yulu@utexas.edu
  * Github:    https://github.com/SuperYuLu 
  * 
- * Created: Fri Aug 10 11:02:24 2018 (-0500)
+ * Created: Mon Aug 20 23:21:40 2018 (-0500)
  * Version: 
- * Last-Updated: Tue Aug 14 10:48:30 2018 (-0500)
+ * Last-Updated: Mon Aug 20 23:21:46 2018 (-0500)
  *           By: yulu
- *     Update #: 9
+ *     Update #: 1
  * 
  */
 
-#ifndef _main_h_
-#define _main_h_
 
-#include <vector>
 #include <iostream>
+#include <fstream>
 #include "wire.h"
 #include "vectorAddOns.h"
-#include "genGrid.h"
 #include "biotSavartLaw.h"
+#include "genGrid.h"
 
-
-
-#endif //_main_h_

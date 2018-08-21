@@ -9,9 +9,9 @@
  * 
  * Created: Wed Aug  8 23:49:50 2018 (-0500)
  * Version: 
- * Last-Updated: Tue Aug 14 10:43:27 2018 (-0500)
+ * Last-Updated: Mon Aug 20 16:55:34 2018 (-0500)
  *           By: yulu
- *     Update #: 95
+ *     Update #: 129
  * 
  */
 
@@ -20,46 +20,59 @@
 
 #include <list>
 #include <vector>
+#include "vectorAddOns.h"
 
-typedef std::list< std::vector <double>> vectorList;
-
-struct IdL_R{
-  vectorList IdL;
-  vectorList R;
-};
-  
 
 
 class Wire{
 
 public:
-  double current;
   double unit_length;
   vectorList path;
-
-  Wire(void){};
-  Wire(const vectorList &, double,  double);
+  bool discretized;
+  Wire(void);
+  Wire(const vectorList &, double);
   
-  IdL_R elementIdLR (void) const;
-  vectorList pathDiscretize(void) const;
+  
+  //vectorList pathDiscretize(void) const;
+  void pathDiscretize(void);
+  
   void pathExtend(const vectorList &extPath);
   void pathExtend(const std::vector<double> &extPath);
   void pathTranslate(const std::vector<double> &xyz);
   void pathTranslate(double x, double y, double z);
   void pathRotate(const std::vector<double> &axis, double deg);
 
-  vectorList linearPath(const std::vector<double> &pt1, const std::vector<double> &pt2);
-  vectorList rectangularPath(double dx, double dy);
-  vectorList ellipticalPath(double rx, double ry, int pts);
-  vectorList circularPath(double radius, int pts);
+  vectorList* linearPath(const std::vector<double> &pt1 = std::vector<double>({-1.0, 0, 0}),
+			const std::vector<double> &pt2 = std::vector<double>({1.0, 0, 0}));
   
-  vectorList ellipticalSolenoidPath(double rx,  double ry, double pitch, int layers,
-				  int turns_per_layer, int points_per_turn);
+  vectorList* rectangularPath(double dx = 1.0,
+			      double dy = 1.0);
   
-  vectorList solenoidPath(double radius, double pitch, int layers, int turns_per_layer,
-			int points_per_turn);
+  vectorList* ellipticalPath(double rx = 1,
+			     double ry = 0.5,
+			     int pts = 50);
+  
+  vectorList* circularPath(double radius = 0.5,
+			   int pts = 50);
+  
+  vectorList* ellipticalSolenoidPath(double rx = 1.0,
+				     double ry = 0.5,
+				     double pitch = 0.1,
+				     int layers = 1,
+				     int turns_per_layer = 2,
+				     int points_per_turn = 40);
+
+
+  vectorList* solenoidPath(double radius = 0.5,
+			   double pitch = 0.1,
+			   int layers = 1,
+			   int turns_per_layer = 10,
+			   int points_per_turn = 40);
+    
+  
+  //IdL_R elementIdLR (void) const;
   
 };
-
 
 #endif //_wire_h_
