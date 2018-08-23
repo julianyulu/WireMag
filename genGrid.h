@@ -9,9 +9,9 @@
  * 
  * Created: Mon Aug 13 22:53:16 2018 (-0500)
  * Version: 
- * Last-Updated: Mon Aug 20 22:02:12 2018 (-0500)
+ * Last-Updated: Thu Aug 23 10:16:21 2018 (-0500)
  *           By: yulu
- *     Update #: 59
+ *     Update #: 60
  * 
  */
 
@@ -31,7 +31,7 @@ public:
 
   Grid(void);
   //Grid(std::string kind = "cuboidVolumn");
-  
+  void save(void);
   vectorList* singlePiont(double x = 0.0,
 			  double y = 0.0,
 			  double z = 0.0);

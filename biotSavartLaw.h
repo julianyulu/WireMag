@@ -9,25 +9,26 @@
  * 
  * Created: Sat Aug 11 21:16:38 2018 (-0500)
  * Version: 
- * Last-Updated: Mon Aug 20 23:07:04 2018 (-0500)
+ * Last-Updated: Thu Aug 23 09:54:11 2018 (-0500)
  *           By: yulu
- *     Update #: 85
+ *     Update #: 93
  * 
  */
 
 #ifndef _biot_savart_law_h
 #define _biot_savart_law_h
-#include<vector>
-#include<list>
+#include <vector>
+#include <list>
 #include "vectorAddOns.h"
 #include "wire.h"
 #include "genGrid.h"
 
 class BiotSavartLaw{
- public:
+public:
   std::list<const Wire*> wires;
   const Grid* mesh;
   double current;
+  vectorList* magField;
   
   BiotSavartLaw(void);
   BiotSavartLaw(const Wire* ptrWireObj, const Grid* gridObj, double current_value);
@@ -37,9 +38,7 @@ class BiotSavartLaw{
   void clearWires(void);
 
   std::vector<double> singlePointBField(const std::vector<double> &r);
-  vectorList* meshGridBField(void);
-  
-  
+  void meshGridBField(void);
   
   
 private:
@@ -49,8 +48,6 @@ private:
   const vectorList* IdL(void);
   const vectorList* R(void);
   std::vector<double> crossProduct(const std::vector<double> &x, const std::vector<double> &y);
-  
-  
 
 };
 

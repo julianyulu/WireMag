@@ -9,9 +9,9 @@
  * 
  * Created: Wed Aug  8 23:49:50 2018 (-0500)
  * Version: 
- * Last-Updated: Mon Aug 20 16:55:34 2018 (-0500)
+ * Last-Updated: Thu Aug 23 10:22:00 2018 (-0500)
  *           By: yulu
- *     Update #: 129
+ *     Update #: 130
  * 
  */
 
@@ -30,9 +30,10 @@ public:
   double unit_length;
   vectorList path;
   bool discretized;
+
   Wire(void);
   Wire(const vectorList &, double);
-  
+  void save(void);
   
   //vectorList pathDiscretize(void) const;
   void pathDiscretize(void);

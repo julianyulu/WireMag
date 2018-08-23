@@ -9,14 +9,15 @@
 // 
 // Created: Mon Aug 13 22:53:04 2018 (-0500)
 // Version: 
-// Last-Updated: Mon Aug 20 22:22:45 2018 (-0500)
+// Last-Updated: Thu Aug 23 10:26:18 2018 (-0500)
 //           By: yulu
-//     Update #: 116
+//     Update #: 124
 
 
 #include <cmath>
 #include "genGrid.h"
-
+#include <fstream>
+#include <iostream>
 Grid :: Grid(void){
   grid = vectorList({});
 }
@@ -33,6 +34,19 @@ Grid:: Grid(std::string kind){
   }
 }
 */  
+
+void Grid :: save(void){
+  std::ofstream f("grid.dat", std::ios::out);
+  if(f.is_open()){
+    f << "#" << "x\t" << "y\t" << "z" << std::endl; //gnuplot comment
+    writeVectorList(f, grid);
+    f.close();
+    std::cout << "Grid data saved in file: " << "grid.dat" << std::endl;
+  }
+}
+
+
+
 // Single point grid
 vectorList* Grid ::  singlePiont(double x, double y, double z){
   static vectorList point = {{x, y, z}};

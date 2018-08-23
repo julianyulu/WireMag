@@ -9,13 +9,15 @@
 // 
 // Created: Sun Jul 22 13:12:30 2018 (-0500)
 // Version: 
-// Last-Updated: Mon Aug 20 16:57:32 2018 (-0500)
+// Last-Updated: Thu Aug 23 10:28:45 2018 (-0500)
 //           By: yulu
-//     Update #: 673
+//     Update #: 680
 // 
 
 #include <algorithm>
 #include <cmath>
+#include <iostream>
+#include <fstream>
 #include "wire.h"
 #include "vectorAddOns.h"
 
@@ -31,6 +33,16 @@ Wire :: Wire(const vectorList &path_value,  double unit_length_value){
   path = path_value;
   unit_length = unit_length_value;
   discretized = false;
+}
+
+void Wire :: save(void){
+  std::ofstream f("wire.dat", std::ios::out);
+  if(f.is_open()){
+    f << "#" << "x\t" << "y\t" << "z" << std::endl; //gnuplot comment 
+    writeVectorList(f, path);
+    f.close();
+    std::cout << "Wire geometry data saved in file: " << "wire.dat" << std::endl;
+  }
 }
 
 

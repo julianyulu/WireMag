@@ -9,9 +9,9 @@
 // 
 // Created: Sat Aug 11 21:16:24 2018 (-0500)
 // Version: 
-// Last-Updated: Mon Aug 20 23:16:03 2018 (-0500)
+// Last-Updated: Thu Aug 23 09:50:45 2018 (-0500)
 //           By: yulu
-//     Update #: 228
+//     Update #: 241
 // 
 
 #include <iostream>
@@ -23,16 +23,24 @@ BiotSavartLaw :: BiotSavartLaw(void){
   wires = std::list<const Wire*>({});
   mesh = 0;
   current = 0.0;
+  magField = 0;
   ptr_IdL = 0;
   ptr_R = 0;
 }
 
 BiotSavartLaw :: BiotSavartLaw(const Wire* ptrWireObj, const Grid* gridObj, double current_value){
+  // input parameters
   wires.push_back(ptrWireObj);
   mesh = gridObj;
   current = current_value;
+
+  // intermediate parameters
   ptr_IdL = IdL();
   ptr_R = R();
+
+  // result parameters
+  magField = 0;
+  
 }
 
 
@@ -131,12 +139,11 @@ std::vector<double> BiotSavartLaw :: singlePointBField (const std::vector<double
 }
 
 
-vectorList* BiotSavartLaw:: meshGridBField(void){
+void BiotSavartLaw:: meshGridBField(void){
   
   //std::cout << "yes" << std::endl;
   //std::cout << (*mesh).grid.size() << std::endl;
   static vectorList field((mesh -> grid).size());
-  
   std::list<const Wire*> ::const_iterator wireIter = wires.cbegin();
   vectorList::const_iterator gridIter = (mesh -> grid).cbegin();
   vectorList::iterator fieldIter;
@@ -160,6 +167,6 @@ vectorList* BiotSavartLaw:: meshGridBField(void){
     
     wireIter ++;
   }
-  return &field;
+  magField = &field;
 }
 

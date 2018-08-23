@@ -28,4 +28,4 @@ biotSavartLaw.o: biotSavartLaw.h
 	$(CC) $(CPPFLAGS) -c biotSavartLaw.cc
 
 clean:
-	rm $(PROG) $(OBJS) *.gch
+	rm $(PROG) $(OBJS) *.gch *.dat
