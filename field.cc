@@ -9,21 +9,24 @@
 // 
 // Created: Thu Aug 23 10:02:15 2018 (-0500)
 // Version: 
-// Last-Updated: Thu Aug 23 10:27:17 2018 (-0500)
+// Last-Updated: Fri Aug 24 00:39:44 2018 (-0500)
 //           By: yulu
-//     Update #: 12
+//     Update #: 22
 // 
 
 #include "field.h"
+#include <iostream>
 
 Field :: Field(void){
   grid = 0;
   field = 0;
+  sliced = {};
 }
 
 Field :: Field(vectorList* ptrGrid, vectorList* ptrFeild){
   grid = ptrGrid;
   field = ptrField;
+  sliced = {};
 }
 
 
@@ -45,7 +48,40 @@ void Field :: save(void){
   }
 }
 
+/*
+const vectorList* Field :: findSingleXYZ(char axis, double value){
+  int colIdx;
+  double minDiff;
+  vectorList :: const_iterator pGrid;
+  vectorList :: const_iterator pField;
+  static vectorList :: resultList;
 
+    
+  switch(axis){
+  case 'x': colIdx = 0;
+  case 'y': colIdx = 1;
+  case 'z': colIdx = 2;
+  default:
+    std::err << "Axis not understand, options: 'x', 'y', 'z'" << std::endl;
+  }
+
+  pGrid = grid -> begin();
+  pField = field -> begin();
+
+  minDiff = l2_norm(*pGrid - (*std::next(pGrid)));
+  pGrid = grid -> begin();
+    
+  while(pGrid != grid -> end()){
+    if(std :: abs((*pGrid)[colIdx] - value)) < minDiff{
+	minDiff = std :: abs((*pGrid)[colIdx] - value);
+	if(resultList.empty){
+	  resultList.push_back((*pGrid)
+*/
+  
+  
+
+
+void Field :: sliceX(double x){
   
 
 

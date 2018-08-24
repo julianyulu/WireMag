@@ -9,9 +9,9 @@
  * 
  * Created: Thu Aug 23 09:55:30 2018 (-0500)
  * Version: 
- * Last-Updated: Thu Aug 23 10:25:28 2018 (-0500)
+ * Last-Updated: Fri Aug 24 00:13:35 2018 (-0500)
  *           By: yulu
- *     Update #: 18
+ *     Update #: 23
  * 
  */
 
@@ -27,14 +27,18 @@ classs Field{
  public:
   const vectorList* grid;
   const vectorList* field;
+  const vectorList sliced;
   
   Field(void);
-  Field(vectorList* ptrGrid, vectorList* ptrFeild);
+  Field(const vectorList* ptrGrid, const vectorList* ptrFeild);
+
+  void sliceX(double x);
 
   void save(void);
+  
  private:
   std::list<double>* normField(const vectorList* inputField);
-  
+  const vectorList* findSingleXYZ(char axis, double value);
 
 };
 
