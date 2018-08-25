@@ -9,9 +9,9 @@
  * 
  * Created: Mon Aug 20 23:21:40 2018 (-0500)
  * Version: 
- * Last-Updated: Mon Aug 20 23:21:46 2018 (-0500)
+ * Last-Updated: Sat Aug 25 12:22:06 2018 (-0500)
  *           By: yulu
- *     Update #: 1
+ *     Update #: 2
  * 
  */
 
@@ -22,4 +22,4 @@
 #include "vectorAddOns.h"
 #include "biotSavartLaw.h"
 #include "genGrid.h"
-
+#include "field.h"

@@ -9,56 +9,41 @@
 // 
 // Created: Mon Aug 20 12:09:07 2018 (-0500)
 // Version: 
-// Last-Updated: Thu Aug 23 10:29:45 2018 (-0500)
+// Last-Updated: Sat Aug 25 13:07:09 2018 (-0500)
 //           By: yulu
-//     Update #: 181
+//     Update #: 196
 // 
 
 #include "main.h"
 
 int main(){
-
-  // Generate and save grid points 
-  Grid g;
-  g.grid = *g.rectanglePlane();
-  g.save();
-  /*
-  std::ofstream f1("grid.dat", std::ios::out);
-  if (f1.is_open()){
-    writeVectorList(f1, g.grid);
-    f1.close();
-  }
-  */
-  
   // Generate and save wire geometry
   Wire w;
   w.path = *w.solenoidPath();
   w.unit_length = 0.05;
   w.pathDiscretize();
   w.save();
-
-  /*
-  std::ofstream f2("wire_path.dat", std::ios::out);
-  if (f2.is_open()){
-    writeVectorList(f2, w.path);
-    f2.close();
-  }
-  */
-
+  
+  // Generate and save grid points 
+  Grid g;
+  g.grid = *g.rectanglePlane();
+  g.save();
+  
   // Calculate under biotSavartLaw 
   BiotSavartLaw bst;
   bst.addWires(&w);
   bst.mesh = &g;
   bst.current = 500;
-  
   bst.meshGridBField();
 
+  // Prepare for output
+  Field fd;
+  fd.grid = &g.grid;
+  fd.field = bst.magField;
+  fd.scalarField();
+  fd.sliceZ(0);
+  fd.save();
   
-  std::ofstream f3("B_field.dat", std::ios::out);
-  if (f3.is_open()){
-    writeVectorList(f3, *bst.magField);
-    f3.close();
-  }
-
+  
   return 0;
 }

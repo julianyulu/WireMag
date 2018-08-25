@@ -9,9 +9,9 @@
  * 
  * Created: Thu Aug 23 09:55:30 2018 (-0500)
  * Version: 
- * Last-Updated: Fri Aug 24 00:13:35 2018 (-0500)
+ * Last-Updated: Sat Aug 25 12:41:07 2018 (-0500)
  *           By: yulu
- *     Update #: 23
+ *     Update #: 38
  * 
  */
 
@@ -19,25 +19,30 @@
 #define _field_h_
 
 #include "vectorAddOns.h"
-#include "grid.h"
+#include "genGrid.h"
 #include "wire.h"
-#include "bioSavartLaw.h"
+#include "biotSavartLaw.h"
 #include <list>
-classs Field{
+
+class Field{
  public:
   const vectorList* grid;
   const vectorList* field;
-  const vectorList sliced;
+  vectorList sliced;
   
   Field(void);
   Field(const vectorList* ptrGrid, const vectorList* ptrFeild);
 
   void sliceX(double x);
+  void sliceY(double y);
+  void sliceZ(double z);
 
+  void scalarField();
   void save(void);
   
  private:
-  std::list<double>* normField(const vectorList* inputField);
+  bool normalize = false;
+  vectorList* normField(const vectorList* inputField);
   const vectorList* findSingleXYZ(char axis, double value);
 
 };

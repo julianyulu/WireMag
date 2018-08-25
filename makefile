@@ -3,13 +3,13 @@ CC = g++
 
 CPPFLAGS = -g -Wall
 
-LDFLAGS = -lboost_iostreams -lboost_system -lboost_filesystem
+# LDFLAGS = -lboost_iostreams -lboost_system -lboost_filesystem
 
-OBJS = main.o wire.o biotSavartLaw.o vectorAddOns.o genGrid.o
+OBJS = main.o wire.o biotSavartLaw.o vectorAddOns.o genGrid.o field.o
 
 
 $(PROG): $(OBJS)
-	$(CC) -o $(PROG) $(OBJS) $(LDFLAGS)
+	$(CC) -o $(PROG) $(OBJS) 
 
 main.o: main.h
 	$(CC) $(CPPFLAGS) -c main.cc
@@ -28,4 +28,4 @@ biotSavartLaw.o: biotSavartLaw.h
 	$(CC) $(CPPFLAGS) -c biotSavartLaw.cc
 
 clean:
-	rm $(PROG) $(OBJS) *.gch *.dat
+	rm $(PROG) $(OBJS) *.dat
