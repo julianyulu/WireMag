@@ -1,6 +1,6 @@
-// vectorAddOns.cc --- 
+// vectorOptration.cc --- 
 // 
-// Filename: vectorAddOns.cc
+// Filename: vectorOptration.cc
 // Description: 
 // 
 // Author:    Yu Lu
@@ -9,13 +9,13 @@
 // 
 // Created: Wed Aug  8 22:29:28 2018 (-0500)
 // Version: 
-// Last-Updated: Sun Aug 26 12:26:08 2018 (-0500)
+// Last-Updated: Sun Aug 26 13:55:07 2018 (-0500)
 //           By: yulu
-//     Update #: 99
+//     Update #: 100
 // 
 
-#ifndef _vectorAddOns_h_
-#define _vectorAddOns_h_
+#ifndef _VECTOROPERATION_H_
+#define _VECTOROPERATION_H_
 
 #include<vector>
 #include<list>
@@ -165,4 +165,4 @@ double l2_norm(const std::vector<int>  &);
 double vector_dot(const std::vector<double> &, const std::vector<double> &);
     
 
-#endif //_vectorAddOns_h_
+#endif //_VECTOROPERATION_H_

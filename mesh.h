@@ -9,14 +9,14 @@
  * 
  * Created: Mon Aug 13 22:53:16 2018 (-0500)
  * Version: 
- * Last-Updated: Sun Aug 26 13:05:55 2018 (-0500)
+ * Last-Updated: Sun Aug 26 13:53:43 2018 (-0500)
  *           By: yulu
- *     Update #: 83
+ *     Update #: 84
  * 
  */
 
-#ifndef _mesh_h_
-#define _mesh_h_
+#ifndef _Mesh_H_
+#define _Mesh_H_
 
 #include <list>
 #include <vector>
@@ -47,4 +47,4 @@ private:
 };
 
 
-#endif //_mesh_h_
+#endif //_Mesh_H_

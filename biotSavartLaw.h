@@ -9,14 +9,14 @@
  * 
  * Created: Sat Aug 11 21:16:38 2018 (-0500)
  * Version: 
- * Last-Updated: Sun Aug 26 13:05:20 2018 (-0500)
+ * Last-Updated: Sun Aug 26 13:52:25 2018 (-0500)
  *           By: yulu
- *     Update #: 142
+ *     Update #: 143
  * 
  */
 
-#ifndef _biot_savart_law_h_
-#define _biot_savart_law_h_
+#ifndef _Biot_Savart_Law_H_
+#define _Biot_Savart_Law_H_
 
 #include <vector>
 #include <list>
@@ -71,4 +71,4 @@ private:
   
 
 
-#endif //_biot_savart_law_h
+#endif //_Biot_Savart_Law_H_
