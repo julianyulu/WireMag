@@ -9,25 +9,35 @@
 // 
 // Created: Thu Aug  9 00:07:39 2018 (-0500)
 // Version: 
-// Last-Updated: Mon Aug 20 15:05:10 2018 (-0500)
+// Last-Updated: Sun Aug 26 13:00:49 2018 (-0500)
 //           By: yulu
-//     Update #: 19
+//     Update #: 26
 // 
 
-#include "vectorAddOns.h"
+#include "vectorOperation.h"
 #include <cmath>
 
 
-
+// Write Vectorlist as output csv stream
 std::ostream& writeVectorList(std::ostream& os, vectorList& v){
   for(auto x:v){
     for(auto y:x){
-      os << y << "\t";
+      if(y != x.back()){os << y << ",";}
+      else{os << y << std::endl;}
     }
-    os << std::endl;
   }
   return os;
 }
+
+// Cross product of two vectors 
+std::vector<double> crossProduct(const std::vector<double> &x,
+				 const std::vector<double> &y){
+  std::vector<double> product = {x[1] * y[2] - x[2] * y[1],
+				 x[0] * y[2] - x[2] * y[0],
+				 x[0] * y[1] - x[1] * y[0]};
+  return product;
+}
+
 
 
 // l2 normalization of vector

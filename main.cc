@@ -9,9 +9,9 @@
 // 
 // Created: Mon Aug 20 12:09:07 2018 (-0500)
 // Version: 
-// Last-Updated: Sat Aug 25 13:07:09 2018 (-0500)
+// Last-Updated: Sun Aug 26 12:55:39 2018 (-0500)
 //           By: yulu
-//     Update #: 196
+//     Update #: 231
 // 
 
 #include "main.h"
@@ -25,25 +25,21 @@ int main(){
   w.save();
   
   // Generate and save grid points 
-  Grid g;
-  g.grid = *g.rectanglePlane();
-  g.save();
+  Mesh m;
+  m.genMesh(-1, -1, -1, 1, 1, 1,  0.2);
+  m.save();
   
   // Calculate under biotSavartLaw 
   BiotSavartLaw bst;
   bst.addWires(&w);
-  bst.mesh = &g;
+  bst.mesh = &m;
   bst.current = 500;
-  bst.meshGridBField();
-
-  // Prepare for output
-  Field fd;
-  fd.grid = &g.grid;
-  fd.field = bst.magField;
-  fd.scalarField();
-  fd.sliceZ(0);
-  fd.save();
+  bst.calculate();
   
-  
+  bst.startAnalysis();
+  bst.sliceMeshZ(0);
+  bst.normField();
+  bst.saveAsCSV();
+    
   return 0;
 }

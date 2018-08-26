@@ -5,7 +5,7 @@ CPPFLAGS = -g -Wall
 
 # LDFLAGS = -lboost_iostreams -lboost_system -lboost_filesystem
 
-OBJS = main.o wire.o biotSavartLaw.o vectorAddOns.o genGrid.o field.o
+OBJS = main.o wire.o biotSavartLaw.o vectorOperation.o mesh.o
 
 
 $(PROG): $(OBJS)
@@ -14,18 +14,18 @@ $(PROG): $(OBJS)
 main.o: main.h
 	$(CC) $(CPPFLAGS) -c main.cc
 
-vectorAddOns.o: vectorAddOns.h
-	$(CC) $(CPPFLAGS) -c vectorAddOns.cc
+vectorAddOns.o: vectorOperation.h
+	$(CC) $(CPPFLAGS) -c vectorOperation.cc
 
 wire.o: wire.h
 	$(CC) $(CPPFLAGS) -c wire.cc
 
-genGrid.o: genGrid.h
-	$(CC) $(CPPFLAGS) -c genGrid.cc
+mesh.o: mesh.h
+	$(CC) $(CPPFLAGS) -c mesh.cc
 
 
 biotSavartLaw.o: biotSavartLaw.h
 	$(CC) $(CPPFLAGS) -c biotSavartLaw.cc
 
 clean:
-	rm $(PROG) $(OBJS) *.dat
+	rm $(PROG) $(OBJS) *.csv *.dat

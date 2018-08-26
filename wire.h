@@ -9,9 +9,9 @@
  * 
  * Created: Wed Aug  8 23:49:50 2018 (-0500)
  * Version: 
- * Last-Updated: Thu Aug 23 10:22:00 2018 (-0500)
+ * Last-Updated: Sun Aug 26 13:07:35 2018 (-0500)
  *           By: yulu
- *     Update #: 130
+ *     Update #: 135
  * 
  */
 
@@ -20,22 +20,22 @@
 
 #include <list>
 #include <vector>
-#include "vectorAddOns.h"
-
-
+#include <algorithm>
+#include <cmath>
+#include <iostream>
+#include <fstream>
+#include "vectorOperation.h"
 
 class Wire{
 
 public:
-  double unit_length;
+  double unit_length; 
   vectorList path;
   bool discretized;
 
   Wire(void);
   Wire(const vectorList &, double);
   void save(void);
-  
-  //vectorList pathDiscretize(void) const;
   void pathDiscretize(void);
   
   void pathExtend(const vectorList &extPath);
@@ -71,9 +71,6 @@ public:
 			   int turns_per_layer = 10,
 			   int points_per_turn = 40);
     
-  
-  //IdL_R elementIdLR (void) const;
-  
-};
+  };
 
 #endif //_wire_h_

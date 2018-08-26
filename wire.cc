@@ -9,18 +9,13 @@
 // 
 // Created: Sun Jul 22 13:12:30 2018 (-0500)
 // Version: 
-// Last-Updated: Thu Aug 23 10:28:45 2018 (-0500)
+// Last-Updated: Sun Aug 26 13:02:05 2018 (-0500)
 //           By: yulu
-//     Update #: 680
+//     Update #: 681
 // 
 
-#include <algorithm>
-#include <cmath>
-#include <iostream>
-#include <fstream>
-#include "wire.h"
-#include "vectorAddOns.h"
 
+#include "wire.h"
 
 Wire :: Wire(void){
   path = vectorList({});

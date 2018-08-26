@@ -9,46 +9,60 @@
  * 
  * Created: Sat Aug 11 21:16:38 2018 (-0500)
  * Version: 
- * Last-Updated: Thu Aug 23 09:54:11 2018 (-0500)
+ * Last-Updated: Sun Aug 26 13:05:20 2018 (-0500)
  *           By: yulu
- *     Update #: 93
+ *     Update #: 142
  * 
  */
 
-#ifndef _biot_savart_law_h
-#define _biot_savart_law_h
+#ifndef _biot_savart_law_h_
+#define _biot_savart_law_h_
+
 #include <vector>
 #include <list>
-#include "vectorAddOns.h"
+#include <string>
+#include <iostream>
+#include <algorithm>
+#include "vectorOperation.h"
 #include "wire.h"
-#include "genGrid.h"
+#include "mesh.h"
 
 class BiotSavartLaw{
 public:
-  std::list<const Wire*> wires;
-  const Grid* mesh;
   double current;
-  vectorList* magField;
-  
+  vectorList magField;
+  const Mesh* mesh;
+  std::list<const Wire*> wires;
+    
   BiotSavartLaw(void);
-  BiotSavartLaw(const Wire* ptrWireObj, const Grid* gridObj, double current_value);
+  BiotSavartLaw(const Wire* ptrWireObj, const Mesh* meshObj, double current_value);
 
   
   void addWires(const Wire* wireObj);
   void clearWires(void);
-
-  std::vector<double> singlePointBField(const std::vector<double> &r);
-  void meshGridBField(void);
+  void calculate(void);
   
-  
+  double fieldAt(double x, double y, double z);
+  void startAnalysis(void);
+  void normField(void);
+  void sliceMeshX(double x);
+  void sliceMeshY(double y);
+  void sliceMeshZ(double z);
+  void saveAsCSV(void);
+    
 private:
   const vectorList* ptr_IdL;
   const vectorList* ptr_R;
-  
+  vectorList selectedField;
+  vectorList selectedMesh;
+    
   const vectorList* IdL(void);
   const vectorList* R(void);
-  std::vector<double> crossProduct(const std::vector<double> &x, const std::vector<double> &y);
 
+  std::vector<double> singlePointField(const std::vector<double> &r);
+  
+  void filterAxisField(vectorList& grid, vectorList& field, char axis, double value);
+  std::list<double> uniqueGrid(char axis, const vectorList& grid);
 };
 
 

@@ -9,9 +9,9 @@
  * 
  * Created: Mon Aug 20 23:21:40 2018 (-0500)
  * Version: 
- * Last-Updated: Sat Aug 25 12:22:06 2018 (-0500)
+ * Last-Updated: Sun Aug 26 13:04:12 2018 (-0500)
  *           By: yulu
- *     Update #: 2
+ *     Update #: 6
  * 
  */
 
@@ -19,7 +19,6 @@
 #include <iostream>
 #include <fstream>
 #include "wire.h"
-#include "vectorAddOns.h"
+#include "mesh.h"
 #include "biotSavartLaw.h"
-#include "genGrid.h"
-#include "field.h"
+#include "vectorOperation.h"

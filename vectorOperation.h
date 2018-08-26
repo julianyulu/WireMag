@@ -9,9 +9,9 @@
 // 
 // Created: Wed Aug  8 22:29:28 2018 (-0500)
 // Version: 
-// Last-Updated: Mon Aug 20 15:04:25 2018 (-0500)
+// Last-Updated: Sun Aug 26 12:26:08 2018 (-0500)
 //           By: yulu
-//     Update #: 98
+//     Update #: 99
 // 
 
 #ifndef _vectorAddOns_h_
@@ -26,6 +26,8 @@
 typedef std::list< std::vector <double>> vectorList;
 
 std::ostream& writeVectorList(std::ostream& os, vectorList& v);
+
+std::vector<double> crossProduct(const std::vector<double> &x,const std::vector<double> &y);
   
 
 // Auxxillary funcitions
