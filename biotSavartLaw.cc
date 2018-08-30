@@ -9,9 +9,9 @@
 // 
 // Created: Sat Aug 11 21:16:24 2018 (-0500)
 // Version: 
-// Last-Updated: Sun Aug 26 12:55:31 2018 (-0500)
+// Last-Updated: Wed Aug 29 23:28:25 2018 (-0500)
 //           By: yulu
-//     Update #: 470
+//     Update #: 477
 // 
 
 #include "biotSavartLaw.h" 
@@ -245,7 +245,8 @@ void BiotSavartLaw :: normField(void){
   vectorList :: iterator iterField;
   
   for(iterField = selectedField.begin(); iterField != selectedField.end(); iterField++){
-    *iterField = std::vector<double>({l2_norm(*iterField)});}
+    *iterField = std::vector<double>({l2_norm(*iterField)});
+  }
 }
 
 

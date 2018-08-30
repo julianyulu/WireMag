@@ -9,9 +9,9 @@
 // 
 // Created: Thu Aug  9 00:07:39 2018 (-0500)
 // Version: 
-// Last-Updated: Sun Aug 26 13:00:49 2018 (-0500)
+// Last-Updated: Wed Aug 29 23:27:51 2018 (-0500)
 //           By: yulu
-//     Update #: 26
+//     Update #: 35
 // 
 
 #include "vectorOperation.h"
@@ -20,10 +20,11 @@
 
 // Write Vectorlist as output csv stream
 std::ostream& writeVectorList(std::ostream& os, vectorList& v){
+  int vectorSize = int(v.front().size());
   for(auto x:v){
-    for(auto y:x){
-      if(y != x.back()){os << y << ",";}
-      else{os << y << std::endl;}
+    for(int i = 0; i < vectorSize; i++){
+      if(i != vectorSize - 1 ) os << x[i] << ",";
+      else{os << x[i] << std::endl;}
     }
   }
   return os;

@@ -9,9 +9,9 @@
 // 
 // Created: Sun Jul 22 13:12:30 2018 (-0500)
 // Version: 
-// Last-Updated: Sun Aug 26 13:02:05 2018 (-0500)
+// Last-Updated: Wed Aug 29 23:16:08 2018 (-0500)
 //           By: yulu
-//     Update #: 681
+//     Update #: 682
 // 
 
 
@@ -31,12 +31,12 @@ Wire :: Wire(const vectorList &path_value,  double unit_length_value){
 }
 
 void Wire :: save(void){
-  std::ofstream f("wire.dat", std::ios::out);
+  std::ofstream f("wire.csv", std::ios::out);
   if(f.is_open()){
-    f << "#" << "x\t" << "y\t" << "z" << std::endl; //gnuplot comment 
+    f << "x," << "y," << "z" << std::endl; //gnuplot comment 
     writeVectorList(f, path);
     f.close();
-    std::cout << "Wire geometry data saved in file: " << "wire.dat" << std::endl;
+    std::cout << "Wire geometry csva saved in file: " << "wire.csv" << std::endl;
   }
 }
 

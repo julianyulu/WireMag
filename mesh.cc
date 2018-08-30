@@ -9,9 +9,9 @@
 // 
 // Created: Mon Aug 13 22:53:04 2018 (-0500)
 // Version: 
-// Last-Updated: Sun Aug 26 13:03:19 2018 (-0500)
+// Last-Updated: Wed Aug 29 23:18:55 2018 (-0500)
 //           By: yulu
-//     Update #: 161
+//     Update #: 172
 
 
 
@@ -51,9 +51,15 @@ void Mesh :: genMesh(double x1, double y1, double z1,
   x = gen1DGrid(x1, x2, resolution);
   y = gen1DGrid(y1, y2, resolution);
   z = gen1DGrid(z1, z2, resolution);
-
+  
   // generate meshgrid
   meshgrid = *meshGrid(x, y, z);
+  /*
+  for(auto t:meshgrid){
+    for(auto s:t) std::cout << s << ' ';
+    std::cout << std::endl;
+  } 
+  */
   std::cout << "Totoal meshgrid points generated: " << meshgrid.size() << std::endl;
 }
 
@@ -69,12 +75,12 @@ void Mesh :: genMesh(double x1, double y1, double z1){
 
 
 void Mesh :: save(void){
-  std::ofstream f("meshgrid.dat", std::ios::out);
+  std::ofstream f("meshgrid.csv", std::ios::out);
   if(f.is_open()){
-    f << "#" << "x\t" << "y\t" << "z" << std::endl; //gnuplot comment
+    f << "x," << "y," << "z" << std::endl; //gnuplot comment
     writeVectorList(f, meshgrid);
     f.close();
-    std::cout << "Mesh data saved in file: " << "meshgrid.dat" << std::endl;
+    std::cout << "Mesh data saved in file: " << "meshgrid.csv" << std::endl;
   }
 }
 
