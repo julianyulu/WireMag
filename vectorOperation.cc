@@ -9,9 +9,9 @@
 // 
 // Created: Thu Aug  9 00:07:39 2018 (-0500)
 // Version: 
-// Last-Updated: Wed Aug 29 23:27:51 2018 (-0500)
+// Last-Updated: Thu Aug 30 23:57:51 2018 (-0500)
 //           By: yulu
-//     Update #: 35
+//     Update #: 36
 // 
 
 #include "vectorOperation.h"
@@ -19,7 +19,7 @@
 
 
 // Write Vectorlist as output csv stream
-std::ostream& writeVectorList(std::ostream& os, vectorList& v){
+std::ostream& writeVectorList(std::ostream& os, const vectorList& v){
   int vectorSize = int(v.front().size());
   for(auto x:v){
     for(int i = 0; i < vectorSize; i++){

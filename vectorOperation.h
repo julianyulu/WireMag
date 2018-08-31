@@ -9,9 +9,9 @@
 // 
 // Created: Wed Aug  8 22:29:28 2018 (-0500)
 // Version: 
-// Last-Updated: Sun Aug 26 13:55:07 2018 (-0500)
+// Last-Updated: Fri Aug 31 00:00:43 2018 (-0500)
 //           By: yulu
-//     Update #: 100
+//     Update #: 101
 // 
 
 #ifndef _VECTOROPERATION_H_
@@ -25,7 +25,7 @@
 
 typedef std::list< std::vector <double>> vectorList;
 
-std::ostream& writeVectorList(std::ostream& os, vectorList& v);
+std::ostream& writeVectorList(std::ostream& os, const vectorList& v);
 
 std::vector<double> crossProduct(const std::vector<double> &x,const std::vector<double> &y);
   

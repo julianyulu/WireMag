@@ -9,9 +9,9 @@
  * 
  * Created: Sat Aug 11 21:16:38 2018 (-0500)
  * Version: 
- * Last-Updated: Sun Aug 26 13:52:25 2018 (-0500)
+ * Last-Updated: Fri Aug 31 00:00:04 2018 (-0500)
  *           By: yulu
- *     Update #: 143
+ *     Update #: 145
  * 
  */
 
@@ -23,6 +23,7 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 #include "vectorOperation.h"
 #include "wire.h"
 #include "mesh.h"
@@ -37,7 +38,7 @@ public:
   BiotSavartLaw(void);
   BiotSavartLaw(const Wire* ptrWireObj, const Mesh* meshObj, double current_value);
 
-  
+  void saveWires(void);
   void addWires(const Wire* wireObj);
   void clearWires(void);
   void calculate(void);

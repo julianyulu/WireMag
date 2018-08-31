@@ -9,21 +9,28 @@
 // 
 // Created: Mon Aug 20 12:09:07 2018 (-0500)
 // Version: 
-// Last-Updated: Wed Aug 29 23:57:40 2018 (-0500)
+// Last-Updated: Fri Aug 31 00:02:16 2018 (-0500)
 //           By: yulu
-//     Update #: 248
+//     Update #: 255
 // 
 
 #include "main.h"
 
 int main(){
   // Generate and save wire geometry
-  Wire w;
-  w.path = *w.solenoidPath(5.1e-3, 0.405e-3, 4, 2, 10);
-  w.pathTranslate(0, 0, -0.25e-3);
-  w.unit_length = 2e-3;
-  w.pathDiscretize();
-  w.save();
+  Wire w1;
+  w1.path = *w1.solenoidPath(5.1e-3, 0.405e-3, 4, 2, 20);
+  w1.pathTranslate(0, 0, -2.5e-3);
+  w1.unit_length = 2e-3;
+  w1.pathDiscretize();
+  //w1.save();
+
+  Wire w2;
+  w2.path = *w2.solenoidPath(5.1e-3, 0.405e-3, 4, 2, 20);
+  w2.pathTranslate(0, 0, 2.5e-3);
+  w2.unit_length = 2e-3;
+  w2.pathDiscretize();
+  //w2.save();
 
   // Generate and save grid points 
   Mesh m;
@@ -32,10 +39,12 @@ int main(){
   
   // Calculate under biotSavartLaw 
   BiotSavartLaw bst;
-  bst.addWires(&w);
+  bst.addWires(&w1);
+  bst.addWires(&w2);
   bst.mesh = &m;
   bst.current = 500;
   bst.calculate();
+  bst.saveWires();
   
   bst.startAnalysis();
   //bst.sliceMeshX(0);

@@ -14,7 +14,7 @@ $(PROG): $(OBJS)
 main.o: main.h
 	$(CC) $(CPPFLAGS) -c main.cc
 
-vectorAddOns.o: vectorOperation.h
+vectorOperation.o: vectorOperation.h
 	$(CC) $(CPPFLAGS) -c vectorOperation.cc
 
 wire.o: wire.h

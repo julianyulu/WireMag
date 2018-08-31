@@ -9,9 +9,9 @@
 // 
 // Created: Sat Aug 11 21:16:24 2018 (-0500)
 // Version: 
-// Last-Updated: Wed Aug 29 23:28:25 2018 (-0500)
+// Last-Updated: Fri Aug 31 00:03:21 2018 (-0500)
 //           By: yulu
-//     Update #: 477
+//     Update #: 486
 // 
 
 #include "biotSavartLaw.h" 
@@ -43,6 +43,25 @@ BiotSavartLaw :: BiotSavartLaw(const Wire* ptrWireObj, const Mesh* meshObj, doub
   magField = {};
 }
 
+void BiotSavartLaw :: saveWires(void){
+  int i = 1;
+  std::string filename;
+  int numWires = int(wires.size());
+  std::list<const Wire*> ::const_iterator iterWires;
+  
+  for(iterWires = wires.cbegin(); iterWires != wires.cend(); iterWires ++){
+    if(numWires == 1)
+      filename = "BiotSavartLaw_wire.csv";
+    else
+      filename = "BiotSavartLaw_wire" + std::to_string(i) + ".csv";
+    std::ofstream f(filename, std::ios::out);
+    f << "x," << "y," << "z" << std::endl; //gnuplot comment 
+    writeVectorList(f, (*iterWires) -> path);
+    f.close();
+    std::cout << "Wire geometry csv saved in file: " << filename << std::endl;
+    i++;
+  }
+}
 
 void BiotSavartLaw :: addWires(const Wire *wireObj){wires.push_back(wireObj);}
 
