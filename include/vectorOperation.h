@@ -9,9 +9,9 @@
 // 
 // Created: Wed Aug  8 22:29:28 2018 (-0500)
 // Version: 
-// Last-Updated: Fri Aug 31 00:00:43 2018 (-0500)
+// Last-Updated: Sat Sep  1 11:19:20 2018 (-0500)
 //           By: yulu
-//     Update #: 101
+//     Update #: 108
 // 
 
 #ifndef _VECTOROPERATION_H_
@@ -22,8 +22,11 @@
 #include<algorithm>
 #include<iostream>
 
+//template <typename T>
+//using vectorList = std::list< std::vector <T>>;
 
 typedef std::list< std::vector <double>> vectorList;
+
 
 std::ostream& writeVectorList(std::ostream& os, const vectorList& v);
 
