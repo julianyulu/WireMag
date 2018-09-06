@@ -55,13 +55,13 @@ bst.saveAsCSV();
 
 ## Examples
 Example of generated wire geometry:  
-[wire-example](https://raw.githubusercontent.com/SuperYuLu/WireMag/master/img/wire_example.png)  
+![wire-example](https://raw.githubusercontent.com/SuperYuLu/WireMag/master/img/wire_example.png)  
 
 Example of generated slice meshgrid:  
-[mesh-example](https://raw.githubusercontent.com/SuperYuLu/WireMag/master/img/mesh_example.png)  
+![mesh-example](https://raw.githubusercontent.com/SuperYuLu/WireMag/master/img/mesh_example.png)  
 
 Result of calculated field:  
-[field-example](https://github.com/SuperYuLu/WireMag/blob/master/img/field_example.png)  
+![field-example](https://github.com/SuperYuLu/WireMag/blob/master/img/field_example.png)  
 
 ## Status  
 Under development   
