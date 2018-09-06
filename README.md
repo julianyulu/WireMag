@@ -1,5 +1,5 @@
 # WireMag  
-WireMag is a C++ library for calculating the magnetic field in 3D space with arbitrary wire shape.   
+WireMag is a C++ library for calculating the magnetic field in 3D space generated current in arbitrary wire shape.   
 
 ## Compile  
 This library uses CMake for compliation, by default using g++ (C11). To compile, make a new folder in the package directory:  
@@ -55,13 +55,13 @@ bst.saveAsCSV();
 
 ## Examples
 Example of generated wire geometry:  
-[wire-example](img/wire_example)  
+[wire-example](https://raw.githubusercontent.com/SuperYuLu/WireMag/master/img/wire_example.png)  
 
 Example of generated slice meshgrid:  
-[mesh-example](img/mesh_example)  
+[mesh-example](https://raw.githubusercontent.com/SuperYuLu/WireMag/master/img/mesh_example.png)  
 
 Result of calculated field:  
-[field-example](img/field_example)  
+[field-example](https://github.com/SuperYuLu/WireMag/blob/master/img/field_example.png)  
 
 ## Status  
 Under development   
