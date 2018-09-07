@@ -2,3 +2,4 @@
 *.gch
 .ipynb_checkpoints/
 build/
+*.ipynb
