@@ -7,11 +7,19 @@ This library uses CMake for compliation, by default using g++ (C11). To compile,
 mkdir build
 cd build
 ```
-Then call CMake to compile:  
+Then call CMake to generate makefile:  
 ```bash
 cmake ..
 ```
-An executable 'run' will be generated.  
+A 'Makefile' will then be generated in the 'build' directory. To compile, just:  
+```bashe
+make
+```
+An executable 'run' will be generated under /build/bin, simply execute by:  
+```bash
+./run
+```
+
 
 
 ## How it Works  
