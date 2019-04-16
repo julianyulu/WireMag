@@ -9,9 +9,9 @@
 // 
 // Created: Sun Jul 22 13:12:30 2018 (-0500)
 // Version: 
-// Last-Updated: Thu Aug 30 23:55:23 2018 (-0500)
-//           By: yulu
-//     Update #: 683
+// Last-Updated: Mon Apr 15 19:30:14 2019 (-0500)
+//           By: Yu Lu
+//     Update #: 697
 // 
 
 
@@ -110,6 +110,10 @@ void Wire :: pathExtend(const std::vector<double> &extPath){
   }
 }
 
+void Wire :: pathReverse(void){
+  path.reverse();
+}
+  
 void Wire :: pathTranslate(const std::vector<double> &xyz){
   if(path.empty()){
     std::cout<< "pathTranslate not applicable: path empty !" << std::endl;
@@ -203,11 +207,12 @@ vectorList* Wire :: ellipticalSolenoidPath(double rx, double ry, double pitch, i
 					   int turns_per_layer,  int points_per_turn){
   double const PI = 3.1415926;
   static vectorList esPath;
-  double radians = 0;  
+  double radians = 0;
     
   for(int i = 0; i < layers; i++){
     rx = rx + i * pitch / 2;
     ry = ry + i * pitch / 2;
+    
     for(int j = 0; j < turns_per_layer; j++){
       for(int k = 0; k < points_per_turn; k++){
 	radians = k * 2 * PI / points_per_turn + j * 2 * PI;

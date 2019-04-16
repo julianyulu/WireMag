@@ -9,9 +9,9 @@
  * 
  * Created: Wed Aug  8 23:49:50 2018 (-0500)
  * Version: 
- * Last-Updated: Sun Aug 26 13:55:39 2018 (-0500)
- *           By: yulu
- *     Update #: 136
+ * Last-Updated: Mon Apr 15 19:29:44 2019 (-0500)
+ *           By: Yu Lu
+ *     Update #: 138
  * 
  */
 
@@ -43,7 +43,8 @@ public:
   void pathTranslate(const std::vector<double> &xyz);
   void pathTranslate(double x, double y, double z);
   void pathRotate(const std::vector<double> &axis, double deg);
-
+  void pathReverse(void);
+  
   vectorList* linearPath(const std::vector<double> &pt1 = std::vector<double>({-1.0, 0, 0}),
 			const std::vector<double> &pt2 = std::vector<double>({1.0, 0, 0}));
   
